@@ -1,0 +1,4 @@
+profiles :
+  type: rest
+  resource:     "ProfilBundle:Prof"
+  name_prefix:  api_

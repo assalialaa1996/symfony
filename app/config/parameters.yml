@@ -1,0 +1,20 @@
+# This file is auto-generated during the composer install
+parameters:
+    database_host: 127.0.0.1
+    database_port: null
+    database_name: dormalcorp
+    database_user: root
+    database_password: null
+    mailer_transport: smtp
+    mailer_host: smtp.gmail.com
+    mailer_user: assasin.alaa@gmail.com
+    mailer_password: The50cent
+    secret: ThisTokenIsNotSoSecretChangeIt
+    cors_allow_origin: 'http://localhost'
+    api_name: api
+    api_description: xd
+    jwt_private_key_path: 'C:\xampp\htdocs\plateforme\var\jwt\private.pem'
+    jwt_public_key_path: 'C:\xampp\htdocs\plateforme\var\jwt\public.pem'
+    jwt_key_pass_phrase: ibrahim
+    jwt_token_ttl: 86400
+

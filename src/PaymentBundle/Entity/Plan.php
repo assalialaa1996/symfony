@@ -1,0 +1,169 @@
+<?php
+
+namespace PaymentBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Mapping\ManyToOne;
+use Doctrine\ORM\Mapping\JoinColumn;
+/**
+ * Plan
+ *
+ * @ORM\Table(name="plan")
+ * @ORM\Entity(repositoryClass="PaymentBundle\Repository\PlanRepository")
+ */
+class Plan
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nom", type="string", length=255)
+     */
+    private $nom;
+
+
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="intervale", type="string", length=255)
+     */
+
+    private $intervale;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="stripe_id", type="string" , length=255)
+     */
+    private $stripeId;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="ammount", type="integer")
+     */
+    private $ammount;
+
+
+    /**
+     * Get id.
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set nom.
+     *
+     * @param string $nom
+     *
+     * @return Plan
+     */
+    public function setNom($nom)
+    {
+        $this->nom = $nom;
+
+        return $this;
+    }
+
+    /**
+     * Get nom.
+     *
+     * @return string
+     */
+    public function getNom()
+    {
+        return $this->nom;
+    }
+
+    /**
+     * Set intervale.
+     *
+     * @param string $intervale
+     *
+     * @return Plan
+     */
+    public function setIntervale($intervale)
+    {
+        $this->intervale = $intervale;
+
+        return $this;
+    }
+
+    /**
+     * Get intervale.
+     *
+     * @return string
+     */
+    public function getIntervale()
+    {
+        return $this->intervale;
+    }
+
+
+
+    /**
+     * Set ammount.
+     *
+     * @param int $ammount
+     *
+     * @return Plan
+     */
+    public function setAmmount($ammount)
+    {
+        $this->ammount = $ammount;
+
+        return $this;
+    }
+
+    /**
+     * Get ammount.
+     *
+     * @return int
+     */
+    public function getAmmount()
+    {
+        return $this->ammount;
+    }
+
+
+
+
+    /**
+     * Set stripeId.
+     *
+     * @param string $stripeId
+     *
+     * @return Plan
+     */
+    public function setStripeId($stripeId)
+    {
+        $this->stripeId = $stripeId;
+
+        return $this;
+    }
+
+    /**
+     * Get stripeId.
+     *
+     * @return string
+     */
+    public function getStripeId()
+    {
+        return $this->stripeId;
+    }
+
+
+}

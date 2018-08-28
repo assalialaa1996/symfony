@@ -1,0 +1,119 @@
+<?php
+
+namespace PaymentBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Jeton
+ *
+ * @ORM\Table(name="jeton")
+ * @ORM\Entity(repositoryClass="PaymentBundle\Repository\JetonRepository")
+ */
+class Jeton
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="nbre_prof", type="integer")
+     */
+    private $nbreProf;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="nom", type="string")
+     */
+    private $nom;
+    /**
+     * Get id
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set nbreProf
+     *
+     * @param integer $nbreProf
+     *
+     * @return Jeton
+     */
+    public function setNbreProf($nbreProf)
+    {
+        $this->nbreProf = $nbreProf;
+
+        return $this;
+    }
+
+    /**
+     * Get nbreProf
+     *
+     * @return int
+     */
+    public function getNbreProf()
+    {
+        return $this->nbreProf;
+    }
+
+    /**
+     * @var
+     * @ORM\OneToMany(targetEntity="PaymentBundle\Entity\DetailJetonPack" , mappedBy="jetons" )
+     */
+
+    private $details;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->details = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add detail
+     *
+     * @param \PaymentBundle\Entity\DetailJetonPack $detail
+     *
+     * @return Jeton
+     */
+    public function addDetail(\PaymentBundle\Entity\DetailJetonPack $detail)
+    {
+        $this->details[] = $detail;
+
+        return $this;
+    }
+
+    /**
+     * Remove detail
+     *
+     * @param \PaymentBundle\Entity\DetailJetonPack $detail
+     */
+    public function removeDetail(\PaymentBundle\Entity\DetailJetonPack $detail)
+    {
+        $this->details->removeElement($detail);
+    }
+
+    /**
+     * Get details
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getDetails()
+    {
+        return $this->details;
+    }
+}

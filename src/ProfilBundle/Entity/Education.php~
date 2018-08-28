@@ -1,0 +1,166 @@
+<?php
+
+namespace ProfilBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Education
+ *
+ * @ORM\Table(name="education")
+ * @ORM\Entity(repositoryClass="ProfilBundle\Repository\EducationRepository")
+ */
+class Education
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="place", type="string", length=255)
+     */
+    private $place;
+
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="university", type="string", length=255)
+     */
+    private $university;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="degree", type="string", length=255)
+     */
+    private $degree;
+
+    /**
+     * @var \Date
+     *
+     * @ORM\Column(name="start", type="date", nullable=true)
+     */
+    private $start;
+
+    /**
+     * @var \Date
+     *
+     * @ORM\Column(name="end", type="date" , nullable=true)
+     */
+    private $end;
+
+
+    /**
+     * Get id.
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set place.
+     *
+     * @param string $place
+     *
+     * @return Education
+     */
+    public function setPlace($place)
+    {
+        $this->place = $place;
+
+        return $this;
+    }
+
+    /**
+     * Get place.
+     *
+     * @return string
+     */
+    public function getPlace()
+    {
+        return $this->place;
+    }
+
+    /**
+     * Set degree.
+     *
+     * @param string $degree
+     *
+     * @return Education
+     */
+    public function setDegree($degree)
+    {
+        $this->degree = $degree;
+
+        return $this;
+    }
+
+    /**
+     * Get degree.
+     *
+     * @return string
+     */
+    public function getDegree()
+    {
+        return $this->degree;
+    }
+
+    /**
+     * Set start.
+     *
+     * @param \DateTime $start
+     *
+     * @return Education
+     */
+    public function setStart($start)
+    {
+        $this->start = $start;
+
+        return $this;
+    }
+
+    /**
+     * Get start.
+     *
+     * @return \DateTime
+     */
+    public function getStart()
+    {
+        return $this->start;
+    }
+
+    /**
+     * Set end.
+     *
+     * @param \DateTime $end
+     *
+     * @return Education
+     */
+    public function setEnd($end)
+    {
+        $this->end = $end;
+
+        return $this;
+    }
+
+    /**
+     * Get end.
+     *
+     * @return \DateTime
+     */
+    public function getEnd()
+    {
+        return $this->end;
+    }
+}

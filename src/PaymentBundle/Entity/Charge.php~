@@ -1,0 +1,166 @@
+<?php
+
+namespace PaymentBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Mapping\ManyToOne;
+use Doctrine\ORM\Mapping\JoinColumn;
+/**
+ * Charge
+ *
+ * @ORM\Table(name="charge")
+ * @ORM\Entity(repositoryClass="PaymentBundle\Repository\ChargeRepository")
+ */
+class Charge
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="amount", type="integer")
+     */
+    private $amount;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date", type="date")
+     */
+    private $date;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="stripe_id", type="string", length=255)
+     */
+    private $stripeId;
+
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="source", type="string", length=255)
+     */
+    private $source;
+
+    /**
+     * Get id.
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set amount.
+     *
+     * @param int $amount
+     *
+     * @return Charge
+     */
+    public function setAmount($amount)
+    {
+        $this->amount = $amount;
+
+        return $this;
+    }
+
+    /**
+     * Get amount.
+     *
+     * @return int
+     */
+    public function getAmount()
+    {
+        return $this->amount;
+    }
+
+    /**
+     * Set date.
+     *
+     * @param \DateTime $date
+     *
+     * @return Charge
+     */
+    public function setDate($date)
+    {
+        $this->date = $date;
+
+        return $this;
+    }
+
+    /**
+     * Get date.
+     *
+     * @return \DateTime
+     */
+    public function getDate()
+    {
+        return $this->date;
+    }
+
+    /**
+     * Set stripeId.
+     *
+     * @param string $stripeId
+     *
+     * @return Charge
+     */
+    public function setStripeId($stripeId)
+    {
+        $this->stripeId = $stripeId;
+
+        return $this;
+    }
+
+    /**
+     * Get stripeId.
+     *
+     * @return string
+     */
+    public function getStripeId()
+    {
+        return $this->stripeId;
+    }
+
+    /**
+     * Many charges have One Customer.
+     * @ManyToOne(targetEntity="EntrepriseBundle\Entity\Compte", inversedBy="charges")
+     * @JoinColumn(name="customer_id", referencedColumnName="id")
+     */
+    private $customer;
+
+    /**
+     * Set customer.
+     *
+     * @param \EntrepriseBundle\Entity\Compte|null $customer
+     *
+     * @return Charge
+     */
+    public function setCustomer(\EntrepriseBundle\Entity\Compte $customer = null)
+    {
+        $this->customer = $customer;
+
+        return $this;
+    }
+
+    /**
+     * Get customer.
+     *
+     * @return \EntrepriseBundle\Entity\Compte|null
+     */
+    public function getCustomer()
+    {
+        return $this->customer;
+    }
+}

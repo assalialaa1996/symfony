@@ -1,0 +1,78 @@
+<?php
+
+namespace ProfilBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use JMS\Serializer\Annotation as Serializer;
+/**
+ * Competence
+ *
+ * @ORM\Table(name="competence")
+ * @ORM\Entity(repositoryClass="ProfilBundle\Repository\CompetenceRepository")
+ * @Serializer\ExclusionPolicy("ALL")
+ */
+class Competence
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     *  @Serializer\Expose
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="libelle", type="string", length=255)
+     * @Serializer\Expose
+     */
+    private $libelle;
+
+
+    /**
+     * Get id
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set libelle
+     *
+     * @param string $libelle
+     *
+     * @return Competence
+     */
+    public function setLibelle($libelle)
+    {
+        $this->libelle = $libelle;
+
+        return $this;
+    }
+
+    /**
+     * Get libelle
+     *
+     * @return string
+     */
+    public function getLibelle()
+    {
+        return $this->libelle;
+    }
+
+
+    /**
+     * @var
+     * @ORM\OneToMany(targetEntity="niveau" , mappedBy="competence")
+     */
+
+    private $niveau;
+
+}
+

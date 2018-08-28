@@ -1,0 +1,46 @@
+<?php
+
+namespace ProfilBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * ProfContrat
+ *
+ * @ORM\Table(name="prof_contrat")
+ * @ORM\Entity(repositoryClass="ProfilBundle\Repository\ProfContratRepository")
+ */
+class ProfContrat
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+
+    /**
+     * Get id.
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+    /**
+     * @ORM\ManyToOne(targetEntity="Contrat", inversedBy="list_profil")
+     * @ORM\JoinColumn(name="comp_id", referencedColumnName="id")
+
+     */
+    private $contrats;
+    /**
+     * @ORM\ManyToOne(targetEntity="Prof" , inversedBy="list_contrat")
+     * @ORM\JoinColumn(name="prof_id", referencedColumnName="id")
+     */
+    private $profils;
+
+}

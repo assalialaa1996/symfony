@@ -1,0 +1,152 @@
+<?php
+
+namespace ProfilBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Mapping\OneToMany;
+use JMS\Serializer\Annotation as Serializer;
+/**
+ * City
+ *
+ * @ORM\Table(name="city")
+ * @ORM\Entity(repositoryClass="ProfilBundle\Repository\CityRepository")
+ * @Serializer\ExclusionPolicy("ALL")
+
+ */
+class City
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     * @Serializer\Expose
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="content", type="string", length=255)
+     * @Serializer\Expose
+     */
+    private $content;
+
+
+    /**
+     * Get id
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set content
+     *
+     * @param string $content
+     *
+     * @return City
+     */
+    public function setContent($content)
+    {
+        $this->content = $content;
+
+        return $this;
+    }
+
+    /**
+     * Get content
+     *
+     * @return string
+     */
+    public function getContent()
+    {
+        return $this->content;
+    }
+
+    /**
+     * @var
+     * @ORM\ManyToOne(targetEntity="State", inversedBy="city")
+     * @ORM\JoinColumn(name="state_id", referencedColumnName="id")
+     *
+     */
+    private $states;
+
+    // ...
+    /**
+     * One Product has Many Features.
+     * @OneToMany(targetEntity="Prof", mappedBy="city")
+     */
+
+
+private $profil;
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->profil = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Set state
+     *
+     * @param \ProfilBundle\Entity\State $state
+     *
+     * @return City
+     */
+    public function setState(\ProfilBundle\Entity\State $state = null)
+    {
+        $this->state = $state;
+
+        return $this;
+    }
+
+    /**
+     * Get state
+     *
+     * @return \ProfilBundle\Entity\State
+     */
+    public function getState()
+    {
+        return $this->state;
+    }
+
+    /**
+     * Add profil
+     *
+     * @param \ProfilBundle\Entity\Prof $profil
+     *
+     * @return City
+     */
+    public function addProfil(\ProfilBundle\Entity\Prof $profil)
+    {
+        $this->profil[] = $profil;
+
+        return $this;
+    }
+
+    /**
+     * Remove profil
+     *
+     * @param \ProfilBundle\Entity\Prof $profil
+     */
+    public function removeProfil(\ProfilBundle\Entity\Prof $profil)
+    {
+        $this->profil->removeElement($profil);
+    }
+
+    /**
+     * Get profil
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getProfil()
+    {
+        return $this->profil;
+    }
+}

@@ -1,0 +1,162 @@
+<?php
+
+namespace ProfilBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Mapping\ManyToOne;
+use Doctrine\ORM\Mapping\JoinColumn;
+use JMS\Serializer\Annotation as Serializer;
+/**
+ * niveau
+ *
+ * @ORM\Table(name="niveau")
+ * @ORM\Entity(repositoryClass="ProfilBundle\Repository\niveauRepository")
+ * @Serializer\ExclusionPolicy("ALL")
+ */
+class niveau
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="valeur", type="integer")
+     * @Serializer\Expose
+     */
+    private $valeur;
+
+    /**
+     * niveau constructor.
+     */
+
+
+
+    /**
+     * Get id
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set valeur
+     *
+     * @param integer $valeur
+     *
+     * @return niveau
+     */
+    public function setValeur($valeur)
+    {
+        $this->valeur = $valeur;
+
+        return $this;
+    }
+
+    /**
+     * Get valeur
+     *
+     * @return int
+     */
+    public function getValeur()
+    {
+        return $this->valeur;
+    }
+    /**
+     * @ORM\ManyToOne(targetEntity="Competence", inversedBy="niveau")
+     * @ORM\JoinColumn(name="comp_id", referencedColumnName="id")
+     * @Serializer\Expose
+     */
+private $competences;
+    /**
+     * @ORM\ManyToOne(targetEntity="Prof" , inversedBy="list_comp")
+     * @ORM\JoinColumn(name="prof_id", referencedColumnName="id")
+     */
+    private $profils;
+
+
+
+
+    /**
+     * Set competences
+     *
+     * @param \ProfilBundle\Entity\Competence $competences
+     *
+     * @return niveau
+     */
+    public function setCompetences(\ProfilBundle\Entity\Competence $competences = null)
+    {
+        $this->competences = $competences;
+
+        return $this;
+    }
+
+    /**
+     * Get competences
+     *
+     * @return \ProfilBundle\Entity\Competence
+     */
+    public function getCompetences()
+    {
+        return $this->competences;
+    }
+
+    /**
+     * Set profil
+     *
+     * @param \ProfilBundle\Entity\Prof $profil
+     *
+     * @return niveau
+     */
+    public function setProfil(\ProfilBundle\Entity\Prof $profil = null)
+    {
+        $this->profils = $profil;
+
+        return $this;
+    }
+
+    /**
+     * Get profil
+     *
+     * @return \ProfilBundle\Entity\Prof
+     */
+    public function getProfil()
+    {
+        return $this->profil;
+    }
+
+    /**
+     * Set profils
+     *
+     * @param \ProfilBundle\Entity\Prof $profils
+     *
+     * @return niveau
+     */
+    public function setProfils(\ProfilBundle\Entity\Prof $profils = null)
+    {
+        $this->profils = $profils;
+
+        return $this;
+    }
+
+    /**
+     * Get profils
+     *
+     * @return \ProfilBundle\Entity\Prof
+     */
+    public function getProfils()
+    {
+
+        return $this->profils;
+
+    }
+}

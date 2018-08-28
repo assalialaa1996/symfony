@@ -1,0 +1,35 @@
+chat:
+    resource: "@ChatBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+
+profil:
+    resource: "@ProfilBundle/Controller/"
+    type:     annotation
+    prefix:   /
+entreprise:
+    resource: "@EntrepriseBundle/Controller/"
+    type:     annotation
+    prefix:   /
+payment:
+    resource: "@PaymentBundle/Controller/"
+    type:     annotation
+    prefix:   /
+#fos_user_rest:
+#    type: rest
+#    resource: AppBundle\Controller\FosUserRestController
+
+
+api_login_check:
+    path: /login_check
+
+routing_rest:
+    resource: routing_rest.yml
+
+NelmioApiDocBundle:
+    resource: "@NelmioApiDocBundle/Resources/config/routing.yml"
+    prefix:   /doc
+
+#fos_user:
+#    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
